@@ -4,8 +4,12 @@ netscaler Cookbook
  Can do following:
  1) actions: add,remove and set actions of type cs,rewrite and responder
  2) SSL certificates: Add/removed SSL certificate, for adding certficate certificate and key file should exists in on netscaler
- 3) Content Switch Virtual Servers:
- 
+ 3) Content Switch Virtual Servers: Enable disable, add, remove, set and bind content switch servers to policies and lb vservers
+ 3) LB Virtual Servers: Enable disable, add, remove, set and bind content switch servers to policies and services/servicegroups
+ 5) Policies:
+ 6) Pattern sets: Add,remove pattern sets, bind and unbind patterns  to pattern sets
+ 7) Service and Servicegroup: enable,disable, add,set,remove services/servicegroups. bind/unbind service to members
+ 8) Server: add,remove server
 
 Requirements
 ------------
@@ -13,41 +17,13 @@ Uses Net::SSH to communicates with netscaler
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
-
-e.g.
-#### netscaler::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['netscaler']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+default['netscaler']['management_ip'] = ""
+default['netscaler']['login_name'] = ""
+default['netscaler']['login_passwd'] = ""
 
 Usage
 -----
-#### netscaler::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
-Just include `netscaler` in your node's `run_list`:
-
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[netscaler]"
-  ]
-}
-```
+Pass the IP, crendentials and needed parameter to each of the recipe
 
 Contributing
 ------------
@@ -63,4 +39,7 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors:
+Adesh Kumar
+Art.com
+
