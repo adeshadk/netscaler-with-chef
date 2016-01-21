@@ -7,7 +7,11 @@ action :add do
     begin
       Chef::Log.info("Adding policy #{new_resource.name} on #{new_resource.ns_ip}")
       if new_resource.policy_type.to_s=="cs"
-        command = "add cs policy  '#{new_resource.name}'  -rule '#{new_resource.policy_rule}' -action '#{new_resource.policy_action}' "
+        if new_resource.policy_action != nil   #if action is defined
+          command = "add cs policy  '#{new_resource.name}'  -rule '#{new_resource.policy_rule}' -action '#{new_resource.policy_action}' "
+        else #if no action defined but a target lb is provided at binding time
+          command = "add cs policy  '#{new_resource.name}'  -rule '#{new_resource.policy_rule}' "
+        end
       elsif  new_resource.policy_type.to_s=="rewrite"
         command = "add rewrite policy  '#{new_resource.name}' '#{new_resource.policy_rule}' '#{new_resource.policy_action}' -comment '#{new_resource.comment}'"
       elsif  new_resource.policy_type.to_s=="responder"

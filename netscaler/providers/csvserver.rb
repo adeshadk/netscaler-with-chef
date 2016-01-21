@@ -101,7 +101,13 @@ action :bind do
   if exists?
     begin
 	  Chef::Log.info("Binding  Server #{new_resource.name}")
-      if  new_resource.policy_type != nil && ("#{new_resource.policy_type.to_s}"=="cs"  || "#{new_resource.policy_type.to_s}"=="responder")
+      if  new_resource.policy_type != nil && "#{new_resource.policy_type.to_s}"=="cs"
+          if new_resource.policy_target_lbvserver != nil
+            command = "bind cs vserver #{new_resource.name} -policyname #{new_resource.policy_name} -priority #{new_resource.policy_priority} -targetLBVserver  #{new_resource.policy_target_lbvserver}"
+          else
+            command = "bind cs vserver #{new_resource.name} -policyname #{new_resource.policy_name} -priority #{new_resource.policy_priority}"
+          end
+      elsif new_resource.policy_type != nil && "#{new_resource.policy_type.to_s}"=="responder"
         command = "bind cs vserver #{new_resource.name} -policyname #{new_resource.policy_name} -priority #{new_resource.policy_priority}"
       elsif new_resource.policy_type != nil && "#{new_resource.policy_type.to_s}"=="rewrite"
         command = "bind cs vserver #{new_resource.name} -policyname #{new_resource.policy_name} -priority #{new_resource.policy_priority} -type #{new_resource.policy_flowtype.to_s} -gotoPriorityExpression #{new_resource.policy_goto_expression.to_s}"

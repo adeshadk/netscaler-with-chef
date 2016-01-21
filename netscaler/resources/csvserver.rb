@@ -12,5 +12,6 @@ attribute :policy_name,:kind_of => String,:default => nil
 attribute :policy_priority,:kind_of => Integer,:default => 100
 attribute :policy_flowtype,:kind_of => Symbol,:default => :REQUEST,:equal_to => [:REQUEST, :RESPONSE]
 attribute :policy_goto_expression,:kind_of => Symbol,:default => :NEXT,:equal_to => [:NEXT, :END]
+attribute :policy_target_lbvserver,:kind_of => String,:default => nil
 attribute :certkey_name,:kind_of => String,:default => nil
 attribute :set_options,:kind_of => String,:default => nil
