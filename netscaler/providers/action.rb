@@ -13,7 +13,7 @@ action :add do
           command = "add cs action  '#{new_resource.name}'  -targetLBVserver '#{new_resource.action_targetvserver}'"
         end
       elsif  new_resource.action_type.to_s=="rewrite"
-        command = "add rewrite action  '#{new_resource.name}' '#{new_resource.action_operation}' '#{new_resource.action_target}' '\"#{new_resource.action_value}\"' #{new_resource.add_options}"
+        command = "add rewrite action  '#{new_resource.name}' '#{new_resource.action_operation}' '#{new_resource.action_target}' '#{new_resource.action_value}' #{new_resource.add_options}"
       elsif  new_resource.action_type.to_s=="responder"
         if new_resource.action_htmlpage != nil
           command = "add responder action '#{new_resource.name}' '#{new_resource.action_operation}' '#{new_resource.action_htmlpage}' #{new_resource.add_options}"
