@@ -9,6 +9,6 @@ attribute :protocol_type,:kind_of => Symbol,:default => :HTTP,:equal_to => [:ANY
 attribute :servicegroup_member_port,:kind_of => Fixnum,:default => 80
 attribute :monitor_name ,:kind_of => String,:default =>'http-ecv'
 attribute :disable_timeout,:kind_of => Fixnum,:default => 0
-attribute :disable_graceful,:kind_of => String,:default => true,:equal_to =>[true,false]
+attribute :disable_graceful,:kind_of => String,:default => 'true',:equal_to =>['true','false']
 attribute :add_options, :kind_of => String,:default => ' -cip ENABLED CLIENT-IP  -sp ON -downStateFlush ENABLED'
 attribute :set_options, :kind_of => String,:default => ' -cip ENABLED CLIENT-IP  -sp ON -downStateFlush ENABLED'
