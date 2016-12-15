@@ -51,7 +51,7 @@ action :set do
           command = "set cs action  '#{new_resource.name}'  -targetLBVserver '#{new_resource.action_targetvserver}'"
         end
       elsif  new_resource.action_type.to_s=="rewrite"
-        command = "set rewrite action  '#{new_resource.name}'  -target '#{new_resource.action_target}' -stringBuilderExpr '\"#{new_resource.action_value}\"'"
+        command = "set rewrite action  '#{new_resource.name}'  -target '#{new_resource.action_target}' -stringBuilderExpr '#{new_resource.action_value}'"
       elsif  new_resource.action_type.to_s=="responder"
         if new_resource.action_htmlpage != nil
           command = "set responder action '#{new_resource.name}'  -htmlpage '#{new_resource.action_htmlpage}'"
